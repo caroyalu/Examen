@@ -23,6 +23,7 @@ export default class App extends Component<Props> {
   constructor(props){
     super(props);
     this.state = {
+      Holder:'',
       records: [
         { id: 0, weight: 95, date: 1518449400000 },
         { id: 1, weight: 96.1, date: 1518362400000 },
@@ -39,6 +40,9 @@ export default class App extends Component<Props> {
     records.sort( (recordA,recordB) => recordB.date - recordA.date);
     this.setState({records:records})
   }
+
+
+
 
   render() {
     const { records = [] } = this.state;
@@ -119,23 +123,6 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: 'white'
   },
-  recordContainer:{
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    height: 48,
-    borderBottomWidth: 1,
-    borderBottomColor: '#e4e4e4',
-    paddingLeft: 20,
-    paddingRight: 20
-  },
-  recordWeightText: {
-    fontSize: 21,
-    color: '#f76d1d'
-  },
-  recordDateText: {
-    fontSize: 21,
-    color: 'gray'
-  }
+
 
 });

@@ -12,6 +12,7 @@ import {
   TextInput,
   TouchableHighlight
 } from 'react-native';
+import Helper from './../shared/Helper';
 
 
 
@@ -22,6 +23,15 @@ export default class AddRecord extends Component<Props> {
       //Add Validation here, you can investigate hot to test a Regular Expression on JavaScript.
     }
 
+    AddItemsToArray=()=>{
+          let records = [...this.state.records];
+          //Adding Items To Array.
+          records.push( this.state.Holder.toString() );
+          // Showing the complete Array on Screen Using Alert.
+          Alert.alert(records.toString());
+
+      }
+
   render() {
     return (
       <View style={styles.container}>
@@ -30,15 +40,18 @@ export default class AddRecord extends Component<Props> {
               style={styles.inputText}
               autoCorrect={false}
               underlineColorAndroid='transparent'
-              placeholder={'Peso'}/>
+              placeholder={'Peso'}
+              onChangeText={TextInputValue => this.setState({ Holder : TextInputValue }) }/>
+
+
           <TextInput
               style={styles.inputText}
               placeholder={'Ene. 02/2018'}
               editable={false}/>
         </View>
         <View style={styles.actionContainer}>
-          <TouchableHighlight style={styles.addButton}>
-            <Text style={styles.addButtonText}>AGREGAR</Text>
+          <TouchableHighlight style={styles.addButton} onPress={this.AddItemsToArray}>
+            <Text style={styles.addButtonText} >AGREGAR</Text>
           </TouchableHighlight>
         </View>
       </View>
